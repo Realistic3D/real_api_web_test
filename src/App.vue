@@ -1,26 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <div v-if="selectedLibrary==='three'">
+      <ThreeScene></ThreeScene>
+    </div>
+    <div v-else-if="selectedLibrary==='babylon'">
+      <BblScene></BblScene>
+    </div>
+    <div v-else>
+      <button @click="chooseLibrary('three')">Three.js</button>
+      <button @click="chooseLibrary('babylon')">Babylon.js</button>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import BblScene from "@/pages/BblScene.vue";
+import ThreeScene from "@/pages/ThreeScene.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  components: {ThreeScene, BblScene},
+  data() {
+    return {
+      selectedLibrary: localStorage.getItem('chosenLibrary') || null,
+    };
+  },
+  methods: {
+    chooseLibrary(library) {
+      this.selectedLibrary = library;
+      localStorage.setItem('chosenLibrary', library);
+    },
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
