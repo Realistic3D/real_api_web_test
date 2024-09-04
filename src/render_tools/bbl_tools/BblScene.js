@@ -3,7 +3,6 @@ import { getCurrentInstance } from "vue";
 
 export default class BblScene {
     constructor() {
-        console.log("BblScene")
         this.canvas = this.getCanvas();
         this.instance = getCurrentInstance();
         const { proxy } = this.instance;
@@ -24,11 +23,11 @@ export default class BblScene {
             new BABYLON.Vector3(0, 0.5, 0),
             this.scene
         );
-        this.ambientLight = new BABYLON.HemisphericLight(
-            "EDITOR_LIGHT",
-            new BABYLON.Vector3(0, 1, 0),
-            this.scene
-        );
+        // this.ambientLight = new BABYLON.HemisphericLight(
+        //     "EDITOR_LIGHT",
+        //     new BABYLON.Vector3(0, 1, 0),
+        //     this.scene
+        // );
 
         this.setCamera(this.camera);
         this.setCameraController(true, this.camera);
