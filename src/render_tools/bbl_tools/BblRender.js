@@ -9,9 +9,9 @@ export default class BblRender {
         console.log("Start Babylon.js");
         this.cube();
         this.sunLight();
-        this.spotLight();
-        this.areaLight();
-        this.pointLight();
+        // this.spotLight();
+        // this.areaLight();
+        // this.pointLight();
         console.log("End Babylon.js");
     }
     cube() {
