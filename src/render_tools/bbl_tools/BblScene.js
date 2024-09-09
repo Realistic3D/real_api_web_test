@@ -1,9 +1,10 @@
 import * as BABYLON from "babylonjs";
 import { getCurrentInstance } from "vue";
+import {GetCanvas} from "@/render_tools/common_tools/commons";
 
 export default class BblScene {
     constructor() {
-        this.canvas = this.getCanvas();
+        this.canvas = GetCanvas();
         this.instance = getCurrentInstance();
         const { proxy } = this.instance;
         this.engine = new BABYLON.Engine(this.canvas, true);
@@ -58,15 +59,6 @@ export default class BblScene {
         if (!camera) return;
         this.activeCamera = camera;
         this.scene.activeCamera = camera;
-    }
-    getCanvas() {
-        const canvases = document.querySelectorAll("canvas");
-        for (const canvas of canvases)
-            if (canvas.id === "renderCanvas") return canvas;
-        const canvas = document.createElement("canvas");
-        canvas.id = "renderCanvas";
-        document.body.appendChild(canvas);
-        return canvas;
     }
     onWindowResize() {
         this.engine.resize();

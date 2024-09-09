@@ -4,6 +4,7 @@
 <script>
 
 import ThreeScene from "@/render_tools/three_tools/ThreeScene";
+import ThreeRender from "@/render_tools/three_tools/ThreeRender";
 
 export default {
   name: "ThreeScene",
@@ -15,6 +16,8 @@ export default {
   methods: {
     async start() {
       this.scene = new ThreeScene();
+      this.render = new ThreeRender(this.scene);
+      await this.render.start();
     }
   },
   async mounted() {
