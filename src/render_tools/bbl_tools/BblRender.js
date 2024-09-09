@@ -23,7 +23,6 @@ export default class BblRender {
         this.axesHelpers(light);
         light.position.set(4.07625, 5.90386, 1.00545);
         light.intensity = 10;
-        console.log(light.target)
     }
     spotLight() {
         const light = new REAL.SpotLight(this.scene.scene);
