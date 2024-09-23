@@ -27,10 +27,10 @@
       </div>
     </div>
     <div v-else-if="selectedLibrary === 'three'">
-      <ThreeScene :icons="icons" @resetSelection="resetSelection" />
+      <ThreeScene :icons="icons" :request="request" :cache="cache" @resetSelection="resetSelection" />
     </div>
     <div v-else-if="selectedLibrary === 'babylon'">
-      <BblScene :icons="icons" @resetSelection="resetSelection" />
+      <BblScene :icons="icons" :request="request" :cache="cache" @resetSelection="resetSelection" />
     </div>
   </div>
 </template>
@@ -42,6 +42,7 @@ import BblScene from "@/pages/BblScene.vue";
 import ThreeScene from "@/pages/ThreeScene.vue";
 
 export default {
+  inject: ["cache", "request"],
   components: { ThreeScene, BblScene },
   data() {
     return {

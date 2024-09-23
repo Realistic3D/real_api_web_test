@@ -11,12 +11,16 @@
 import {IconsUI} from "@/utils/IconsUI";
 import ThreeScene from "@/render_tools/three_tools/ThreeScene";
 import ThreeRender from "@/render_tools/three_tools/ThreeRender";
+import CacheManager from "@/render_tools/common_tools/CacheManager";
+import {RequestManager} from "@/render_tools/common_tools/RequestManager";
 
 export default {
   name: "ThreeScene",
   emits: ['resetSelection'],
   props: {
     icons: { type: IconsUI, required: true },
+    cache: { type: CacheManager, required: true },
+    request: { type: RequestManager, required: true },
   },
   data() {
     return {
