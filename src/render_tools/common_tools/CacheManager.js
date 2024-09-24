@@ -3,11 +3,11 @@ export default class CacheManager {
     constructor() {
     }
     loginCache(){
-        const login = this.getCache("login");
-        if(!login) return {};
-        const data = login.data;
-        const token = login.token;
-        return {data: data, token: token};
+        // const login = this.getCache("login");
+        // if(!login) return {};
+        // const data = login.data;
+        // const token = login.token;
+        // return {data: data, token: token};
     }
     consoleSize() {
         const size = this.size();
