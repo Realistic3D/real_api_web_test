@@ -5,31 +5,38 @@ import * as REAL from "real_api_bbl";
 export class RequestManager {
     constructor() {
         this.onProgress = undefined;
+        this.cred = {
+            appKey: "59ErSALSEhUQ4HhwZBlY",
+            prodKey: "hkc6akhXlx0FDhYbt6Go"
+        }
     }
     setProgress(onProgress) {
         this.onProgress = onProgress;
     }
-    async reqNewJob(cred, renderParams) {
-        const params = this.apiParams(cred, "new", undefined, renderParams);
+    async reqNewJob() {
+        const renderParams = {
+            ext: "r3d",
+            expFrom: "bbl",
+        };
+        const params = this.apiParams("new", undefined, renderParams);
         return await this.post(REAL.API, params);
     }
     async uploadJob(uri, contents) {
         return await this.put(uri, contents);
     }
-    async reqSubmitJob(cred, jobID) {
-        const params = this.apiParams(cred, "render", jobID);
+    async reqSubmitJob(jobID) {
+        const params = this.apiParams("render", jobID);
         return await this.post(REAL.API, params);
     }
-    async reqJobResult(cred, jobID) {
-        const params = this.apiParams(cred, "result", jobID);
+    async reqJobResult(jobID) {
+        const params = this.apiParams("result", jobID);
         return await this.post(REAL.API, params);
     }
-    apiParams(cred, type, jobID = undefined, renderParams = undefined) {
+    apiParams(type, jobID = undefined, renderParams = undefined) {
         return  {
-            cred: cred,
             type: type,
-            api: "rapi",
             jobID: jobID,
+            cred: this.cred,
             render: renderParams,
         };
     }

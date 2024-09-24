@@ -28,6 +28,7 @@ export default {
   data() {
     return {
       scene: undefined,
+      camera: undefined,
     }
   },
   methods: {
@@ -35,9 +36,10 @@ export default {
       this.scene = new BblScene();
       const render = new BblRender(this.scene);
       await render.start();
+      this.camera = render.camera;
     },
     async renderClick() {
-      await BblRealApi(this.scene, this.cache, this.request);
+      await BblRealApi(this.scene, this.request, this.camera);
     },
     backClick() {
       this.$emit('resetSelection');
