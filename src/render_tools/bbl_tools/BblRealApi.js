@@ -26,6 +26,7 @@ export async function BblRealApi(bblScene, request, camera){
         if (jobStatus === "COMPLETED") {
             console.log("COMPLETED");
             console.log(response.data.result);
+            viewImage(response.data.result);
         } else {
             console.error(jobStatus);
             await new Promise(resolve => setTimeout(resolve, 5000)); // 5-second delay
@@ -33,6 +34,19 @@ export async function BblRealApi(bblScene, request, camera){
     } while (jobStatus !== "COMPLETED");
 
     return response
+}
+
+function viewImage(imageUrl) {
+    const newWindow = window.open('', '_blank');
+    newWindow.document.write(`
+                <html>
+                <head><title>Image</title></head>
+                <body style="margin:0; display:flex; justify-content:center; align-items:center; height:100vh; background-color:#000;">
+                    <img src="${imageUrl}" alt="Rendered Image" style="max-width:100%; max-height:100%;">
+                </body>
+                </html>
+            `);
+    newWindow.document.close();
 }
 
 function onProgress(progress) {
