@@ -44,10 +44,16 @@ export default class BblRender {
     }
     areaLight() {
         const light = new REAL.AreaLight(this.scene.scene);
-        // light.position.set(0, 2, 1);
-        light.position.z += 1;
+        light.position.set(0, 1, 1);
+        // light.position.z += 1;
         light.intensity = 10;
         // light.rotation.x = -Math.PI / 4;
+        light.rotationQuaternion = new BABYLON.Quaternion.FromEulerAngles(
+            -Math.PI / 4,
+            0,
+            0
+        );
+        console.log(light.transform())
     }
     pointLight() {
         const light = new REAL.PointLight(this.scene.scene);
