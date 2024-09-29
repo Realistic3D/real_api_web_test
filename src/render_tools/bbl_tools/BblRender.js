@@ -44,18 +44,20 @@ export default class BblRender {
         light.position.set(1, 1.5, 0);
     }
     areaLight() {
-        // const light = new REAL.AreaLight(this.scene.scene, {intensity: 10, diffuse: new BABYLON.Color3(0,1,1)});
+        // const light = new REAL.AreaLight(this.scene.scene, {width: 2, intensity: 10, diffuse: new BABYLON.Color3(0,1,1)});
         // light.position.set(0, 1, -1);
+        // light.rotationQuaternion = new BABYLON.Quaternion.FromEulerAngles(Math.PI/2, 0, 0);
         // light.rotation.x = -Math.PI / 2;
-        const light2 = new REAL.AreaLight(this.scene.scene, {intensity: 10});
+        // const quat = new BABYLON.Quaternion().copyFrom(light.rotationQuaternion);
+        const light2 = new REAL.AreaLight(this.scene.scene, {width: 2, intensity: 10});
         light2.position.set(0, 0.5, 2);
-        // light2.rotationQuaternion = new BABYLON.Quaternion.FromEulerAngles(-Math.PI / 4,-Math.PI / 4,0);
-        // light2.rotation.x = -Math.PI / 4;
-        // light2.rotation.y = -Math.PI / 4;
         const angles = new BABYLON.Vector3(-Math.PI / 4, -Math.PI / 4, 0);
         light2.rotationQuaternion = new BABYLON.Quaternion.FromEulerAngles(angles.x, angles.y, angles.z);
+        // const rotationQuaternion = new BABYLON.Quaternion.FromEulerAngles(angles.x + Math.PI/2, angles.y, angles.z);
+        // const quat = new BABYLON.Quaternion().copyFrom(rotationQuaternion);
+        // const rot = `${quat.x}_${quat.z}_${quat.y}_${quat.w}`;
+        // console.error(rot)
         console.log(light2.transform().rotation)
-        console.log(light2.transform().quaternion)
     }
     pointLight() {
         const light = new REAL.PointLight(this.scene.scene);
