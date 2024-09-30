@@ -48,7 +48,7 @@ export default class BblRender {
         // light.position.set(0, 1, -1);
         // light.rotation.x = -Math.PI / 2;
         const light2 = new REAL.AreaLight(this.scene.scene, {intensity: 10});
-        light2.position.set(0, 0.5, 2);
+        light2.position.set(-2, 0.5, 2);
         // light2.rotationQuaternion = new BABYLON.Quaternion.FromEulerAngles(-Math.PI / 4,-Math.PI / 4,0);
         // light2.rotation.x = -Math.PI / 4;
         // light2.rotation.y = -Math.PI / 4;
